@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergent Learning Pipeline</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+        .step { background: #f4f4f9; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        textarea { width: 100%; height: 150px; margin-top: 10px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>The Emergent Learning Pipeline</h1>
+    <p>Turn dense technical resources into intuitive AI podcasts and learning modules.</p>
+
+    <div class="step">
+        <h2>Step 1: Prepare Your Resource</h2>
+        <p>Ensure your notes or transcript are in <b>.txt</b>, <b>.md</b>, or <b>.pdf</b> format.</p>
+    </div>
+
+    <div class="step">
+        <h2>Step 2: Generate Your Master Prompt</h2>
+        <input type="text" id="topicTitle" placeholder="Enter the topic (e.g., Genetics)" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        <button onclick="generatePrompt()">Generate Prompt</button>
+        <textarea id="promptOutput" readonly placeholder="Your master prompt will appear here..."></textarea>
+    </div>
+
+    <div class="step">
+        <h2>Step 3: Execute in NotebookLM</h2>
+        <p>1. Go to <a href="https://notebooklm.google.com/" target="_blank">Google NotebookLM</a>.</p>
+        <p>2. Upload your document.</p>
+        <p>3. Paste the Master Prompt above into the chat to begin your Socratic learning session.</p>
+        <p>4. Click "Generate Audio Overview" to create your podcast!</p>
+    </div>
+
+    <script>
+        function generatePrompt() {
+            const title = document.getElementById('topicTitle').value || "this topic";
+            const prompt = `I have uploaded a document about ${title}. I want you to act as a Socratic tutor. Do not just summarize the text. Instead, break down the core concepts using intuitive metaphors (like architecture, computer science, or music). Test my knowledge one concept at a time, wait for my response, and correct my intuition before moving to the next step. Start with a high-entropy question to gauge my baseline understanding.`;
+            document.getElementById('promptOutput').value = prompt;
+        }
+    </script>
+</body>
+</html>
